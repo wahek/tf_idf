@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table">
+    <caption class="table-name">Количество вхождений слова обратно пропорционально частоте вхождений в предложения</caption>
+    <tr>
+        {% for name in names %}
+        <th>{{ name }}</th>
+        {% endfor %}
+    </tr>
+    {% for item in items %}
+    <tr class="row">
+        {% for i in item %}
+        <td class="cell">{{ i }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

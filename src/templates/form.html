@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container">
+    <div class="card">
+        <h1 class="header">Подсчёт TF-IDF</h1>
+        <hr>
+        <h3 class="settings">Настройки:</h3>
+        <form action="/files/idf" method="post" enctype="multipart/form-data">
+            <div class="settings-block">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <div class="selector">
+                    <label for="select-lev">Выбор коэффициента точности</label>
+                    <select id="select-lev" name="lev">
+                        {% for k, v in items.items() %}
+                        <option class="selector-item" value="{{ v }}">{{ k }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <p class="warning-text" id="warning-text">
+
+                    </p>
+                </div>
+            </div>
+            <label class="custom-upload-button">
+                <img class="download-icon" src="{{ url_for('static', path='icons/download-circle-svgrepo-com.svg') }}" alt="Upload Icon">
+                <span class="download-name">Загрузить файл</span>
+                <input type="file" name="file" id="fileInput">
+            </label>
+            <input class="submit-button" disabled type="submit" value="Загрузить">
+            <p class="warning-format">Приложение поддерживает только расширение файла txt</p>
+        </form>
+    </div>
+</main>
+{% endblock %}
